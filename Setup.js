@@ -4,6 +4,7 @@ import App from './App';
 import firebase from '@react-native-firebase/app';
 import Auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
+import storage from '@react-native-firebase/storage';
 const firebaseConfig = {
   apiKey: 'AIzaSyASs_J51NAqyyQM4z_eFACFxyPT7gBbZ9Q',
   authDomain: 'e-service-2e1c9.firebaseapp.com',
@@ -19,7 +20,7 @@ if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
   console.log('firebase', firebase);
 }
-export  {firebase,Auth,database}
+export  {firebase,Auth,database,storage}
 const Setup = () => {
 
   return <App />;

@@ -65,3 +65,29 @@ export const submitUser = (Id, Name, Position) => {
       });
   });
 };
+export const submitList = (Id, Name, description) => {
+  return new Promise(function(resolve, reject) {
+    let key;
+    if (Id != null) {
+      key = Id;
+    } else {
+      key = database()
+        .ref()
+        .push().key;
+    }
+    let dataToSave = {
+      Id: key,
+      Name: Name,
+      Description: description,
+    };
+    database()
+      .ref('lists/' + key)
+      .update(dataToSave)
+      .then(snapshot => {
+        resolve(snapshot);
+      })
+      .catch(err => {
+        reject(err);
+      });
+  });
+};

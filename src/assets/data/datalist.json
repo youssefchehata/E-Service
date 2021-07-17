@@ -1,0 +1,44 @@
+[
+    {
+      "id": "1",
+      "name": "OPTIMISATION PC",
+      "description": "Vous en avez assez d’un ordinateur lent ? nous vous proposons un nettoyage de votre PC avec désinstallation des programmes obsolètes, optimisation du système de démarrage. Nettoyage des fichiers temps, programmes inutiles et fichiers doublons, vérification de l'état du disque dur et nettoyage manuel de votre ordinateur, nettoyage et optimisation de la base de registre.",
+      "image":"https://www.allopcs.com/87-large/maintenance-et-assistance-informatique.jpg",
+      "prix": "50"
+    },
+    {
+      "id": "2",
+      "name": "Suppression de virus",
+      "description": "Suppression de vos virus et de vos spywares. Analyse de votre ordinateur. Vérification et nettoyage de votre base de registre, nettoyage de vos fichiers temp, et votre « system restore », mise à jour ou installation d’un antivirus gratuit ou du meilleur antivirus de l’année. Mise à jour de votre système d’exploitation et de votre antivirus. Devis gratuit.",
+      "image":"https://www.allopcs.com/87-large/maintenance-et-assistance-informatique.jpg",
+      "prix": "50"
+    },
+    {
+      "id": "3",
+      "name": "Installation de matériel informatique",
+      "description": "Une imprimante, un scanner ou une box à installer ? Pas de panique, nos spécialistes se chargent de paramétrer votre périphérique en un rien de temps. Profitez sereinement de vos équipements.",
+      "image":"https://www.allopcs.com/87-large/maintenance-et-assistance-informatique.jpg",
+      "prix": "50"
+    },
+    {
+      "id": "4",
+      "name": "INSTALLATION DE LOGICIELS",
+      "description": "Nous configurons votre ordinateur pour que vous puissiez l’utiliser en toute tranquillité d’esprit. Débarrassez-vous des contraintes et profitez simplement de votre ordinateur !",
+      "image":"https://www.allopcs.com/87-large/maintenance-et-assistance-informatique.jpg",
+      "prix": "50"
+    },
+    {
+      "id": "5",
+      "name": "Sauvegarde des données",
+      "description": "Vous avez acheté  un nouvel ordinateur, vous voulez changer de système d'exploitation, mais vous souhaitez sauvegarder vos données personnelles et conserver vos données sur votre clé USB ou votre disque dur externe. Nous interviendrons sur votre ordinateur pour transférer et sauvegarder les données choisies tout en vous installant un logiciel sur votre nouveau PC de sauvegarde automatique.",
+      "image":"https://www.allopcs.com/87-large/maintenance-et-assistance-informatique.jpg",
+      "prix": "50"
+    },
+    {
+      "id": "6",
+      "name": "MAINTENANCE ET ASSISTANCE INFORMATIQUE EN LIGNE",
+      "description": "Un technicien est à votre disposition pour le suivi de votre informatique. Il intervient dès la prise en charge par Allo PC de votre parc informatique puis à votre demande en cas de dysfonctionnement ou de question d’ordre général. Si la demande peut être traitée immédiatement par une prise en main à distance. Prix à l'heure",
+      "image":"https://www.allopcs.com/87-large/maintenance-et-assistance-informatique.jpg",
+      "prix": "50"
+    }
+  ]
