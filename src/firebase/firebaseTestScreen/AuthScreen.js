@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {Text, View, TouchableOpacity, TextInput} from 'react-native';
 // import { Container, Content, Header, Body, Title, ListItem, Text, Left, Icon, Button, Right, Form, Item, Input, Label, NativeBaseProvider,Box } from 'native-base';
-import {Auth} from '../../Setup';
-import {SignUpUser, SignInUser, SignOutUser} from '../firebase/apiService';
+import {Auth} from '../../../Setup';
+import {SignUpUser, SignInUser, SignOutUser} from '../apiService';
 
 const AuthScreen = () => {
   const [state, setState] = React.useState({

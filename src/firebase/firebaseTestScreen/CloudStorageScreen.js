@@ -3,7 +3,7 @@ import React from 'react';
 import uuid from 'react-native-uuid';
 import axios from 'axios'
 import {View, Text, Image, FlatList, Dimensions} from 'react-native';
-import {storage} from '../../Setup';
+import {storage} from '../../../Setup';
 // import datalist from '../assets/data/datalist.json';
 const CloudStorageScreen = () => {
   // console.log('datalist',datalist)

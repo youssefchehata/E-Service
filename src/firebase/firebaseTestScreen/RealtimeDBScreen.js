@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {Text, View, TouchableOpacity, TextInput} from 'react-native';
-import {submitUser} from '../firebase/apiService';
-import {database} from '../../Setup';
-import ButtonDefault from '../common/ButtonDefault';
+import {submitUser} from '../apiService';
+import {database} from '../../../Setup';
+import ButtonDefault from '../../common/ButtonDefault';
 
 const RealtimeDBScreen = ({navigation}) => {
   const [Id, setId] = React.useState();

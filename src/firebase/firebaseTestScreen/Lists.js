@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import {submitList} from '../firebase/apiService';
-import {database} from '../../Setup';
+import {submitList} from '../apiService';
+import {database} from '../../../Setup';
 const Lists = () => {
     const [Id, setId] = React.useState();
     const [Name, setName] = React.useState('');

@@ -1,9 +1,11 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
 import { extendTheme, NativeBaseProvider } from 'native-base';
-import AuthScreen from './src/screens/AuthScreen'
-import RealtimeDBScreen from './src/screens/RealtimeDBScreen'
-import Lists from './src/screens/Lists';
+import AuthScreen from './src/firebase/firebaseTestScreen/AuthScreen'
+import RealtimeDBScreen from './src/firebase/firebaseTestScreen/RealtimeDBScreen'
+import Lists from './src/firebase/firebaseTestScreen/Lists';
+import StorageScreen from './src/firebase/firebaseTestScreen/CloudStorageScreen';
+import CloudFireStore from './src/firebase/firebaseTestScreen/CloudFireStore';
 const newColorTheme = {
   brand: {
     900: '#8287af',
@@ -16,17 +18,25 @@ const App = () => {
 
 
   return (
-    <>
+    <ScrollView>
      <NativeBaseProvider theme={theme}>
             {/* <Text>app</Text> */}
-      {/* <AuthScreen/> */}
-      {/* <RealtimeDBScreen/> */}
+
+
+
+       <AuthScreen/>
+      <RealtimeDBScreen/> 
       <Lists/>
+      <StorageScreen/>
+      <CloudFireStore/>
+
+
+
       {/* <Text>{ firebaseConfig()  }</Text> */}
 
       </NativeBaseProvider>
   
-    </>
+    </ScrollView>
   )
 }
 

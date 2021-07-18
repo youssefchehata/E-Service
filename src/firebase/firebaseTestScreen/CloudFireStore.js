@@ -2,7 +2,7 @@ import React from 'react'
 import uuid from 'react-native-uuid';
 import axios from 'axios'
 import {View, Text, Image, FlatList, Dimensions} from 'react-native';
-import {firestore} from '../../Setup';
+import {firestore} from '../../../Setup';
 
 const CloudFireStore = () => {
 
