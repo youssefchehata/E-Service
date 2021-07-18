@@ -1,11 +1,4 @@
-import {
-  LOGIN_USER_SUCCESS,
-  SIGNUP_USER_SUCCESS,
-  SIGNOUT_USER,
-  ADD_ERROR_MESSAGE,
-  ADD_ERROR_MESSAGE,
-  CLEAR_ERROR_MESSAGE,
-} from './actionTypes';
+import * as T from './actionTypes';
 import {Alert} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -13,7 +6,7 @@ export const signin = (username, password) => async dispatch => {
   try {
     // await AsyncStorage.setItem('token', 'res.data.token');
 
-    dispatch({type: LOGIN_USER_SUCCESS});
+    dispatch({type: T.LOGIN_SUCCESS});
   } catch (error) {
     const alert = Alert.alert('Error', 'check your email/password', [
       {text: 'Okay'},
@@ -43,8 +36,8 @@ export const signout = () => async dispatch => {
 
 export const signupUser = (username, password) => async dispatch => {
   try {
-    dispatch({type: SIGNUP_USER_SUCCESS});
+    dispatch({type: T.SIGNUP});
   } catch (error) {
-    dispatch({type: ADD_ERROR_MESSAGE, payload: 'Invalid register'});
+    dispatch({type: T.ADD_ERROR, payload: 'Invalid register'});
   }
 };
