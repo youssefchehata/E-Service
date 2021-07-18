@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
 import {
   StyleSheet,
   Image,
@@ -14,10 +14,36 @@ import AsyncStorage from '@react-native-community/async-storage';
 import colors from '../config/colors';
 
 import routes from '../router/routes';
-
+import {useDimensions,useDeviceOrientation} from '@react-native-community/hooks'
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+  listenOrientationChange as lor,
+  removeOrientationListener as rol
+} from 'react-native-responsive-screen';
 
 
 function Login({navigation}) {
+  const {window:{width:w,}}=useDimensions()
+  const {landscape}=useDeviceOrientation()
+  console.log('lor',lor())
+  console.log('rol',rol())
+  console.log('landscape',landscape)
+  console.log('w',w)
+  console.log('wp',wp('100%'))
+
+  // const {filtredProducts,text,AllProducts } = useSelector( (state) => state.products );
+
+ 
+  const dispatch = useDispatch();
+
+
+
+
+
+
+
+
   //   const auth = useAuth();
   const [loginFailed, setLoginFailed] = useState(false);
   const [email, onChangeEmail] = React.useState('');
