@@ -47,9 +47,9 @@ function Login({navigation}) {
   const [password, onChangePassword] = React.useState('');
 
   const signin = async (emailAddress, password) => {
-      dispatch(SignIn(emailAddress, password))
-      .then(data => { navigation.navigate(routes.ACCEUIL); })
-      .catch(error => { alert(error); });
+      dispatch(SignIn(emailAddress, password ,()=>{console.log('testcallback')}))
+      // .then(data => { navigation.navigate(routes.ACCEUIL); })
+      // .catch(error => { alert(error); });
   };
 
   return (

@@ -16,20 +16,21 @@ export const SignUp = (email, passswod) => {
   });
 };
 
-export const SignIn = (email, passswod) => async dispatch=>{
-  return new Promise(function(resolve, reject) {
-    Auth()
-      .signInWithEmailAndPassword(email, passswod)
-      .then(() => {
-        resolve('Sign In Successfully');
-        dispatch({type: T.LOGIN_SUCCESS});
-      })
-      .catch(error => {
-        reject(error);
-        dispatch({type: "err SignIn" });
-      });
-  });
-};
+export const SignIn = (email, passswod ,callback) =>async  dispatch=>{
+  
+
+try {
+  const res = await Auth().signInWithEmailAndPassword(email, passswod)
+  console.log("res",res);
+  dispatch({type: T.LOGIN_SUCCESS});
+  callback()
+} catch (error) {
+  alert(error);
+  dispatch({type: "err SignIn" });
+}
+
+ 
+
 
 export const SignOut = () => {
   return new Promise(function(resolve, reject) {
