@@ -1,7 +1,48 @@
 import * as T from './actionTypes';
 import {Alert} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import {Auth, database} from '../../../Setup';
 
+export const SignUp = (email, passswod) => {
+  return new Promise(function(resolve, reject) {
+    Auth()
+      .createUserWithEmailAndPassword(email, passswod)
+      .then(() => {
+        resolve('Sign Up Successfully');
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+};
+
+export const SignIn = (email, passswod) => async dispatch=>{
+  return new Promise(function(resolve, reject) {
+    Auth()
+      .signInWithEmailAndPassword(email, passswod)
+      .then(() => {
+        resolve('Sign In Successfully');
+        dispatch({type: T.LOGIN_SUCCESS});
+      })
+      .catch(error => {
+        reject(error);
+        dispatch({type: "err SignIn" });
+      });
+  });
+};
+
+export const SignOut = () => {
+  return new Promise(function(resolve, reject) {
+    Auth()
+      .signOut()
+      .then(() => {
+        resolve('Sign Out Successfully');
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+};
 export const signin = (username, password) => async dispatch => {
   try {
     // await AsyncStorage.setItem('token', 'res.data.token');

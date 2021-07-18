@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   StyleSheet,
   Image,
@@ -14,59 +14,51 @@ import AsyncStorage from '@react-native-community/async-storage';
 import colors from '../config/colors';
 
 import routes from '../router/routes';
-import {useDimensions,useDeviceOrientation} from '@react-native-community/hooks'
+import {
+  useDimensions,
+  useDeviceOrientation,
+} from '@react-native-community/hooks';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
   listenOrientationChange as lor,
-  removeOrientationListener as rol
+  removeOrientationListener as rol,
 } from 'react-native-responsive-screen';
-
+import {SignIn} from '../store/actions/auth_user';
 
 function Login({navigation}) {
-  const {window:{width:w,}}=useDimensions()
-  const {landscape}=useDeviceOrientation()
-  console.log('lor',lor())
-  console.log('rol',rol())
-  console.log('landscape',landscape)
-  console.log('w',w)
-  console.log('wp',wp('100%'))
+  // const {
+  //   window: {width: w},
+  // } = useDimensions();
+  // const {landscape} = useDeviceOrientation();
+  // console.log('lor', lor());
+  // console.log('rol', rol());
+  // console.log('landscape', landscape);
+  // console.log('w', w);
+  // console.log('wp', wp('100%'));
 
   // const {filtredProducts,text,AllProducts } = useSelector( (state) => state.products );
 
- 
   const dispatch = useDispatch();
-
-
-
-
-
-
-
 
   //   const auth = useAuth();
   const [loginFailed, setLoginFailed] = useState(false);
   const [email, onChangeEmail] = React.useState('');
   const [password, onChangePassword] = React.useState('');
 
-
-
-  const signin =async (username, password) => {
-
-  navigation.navigate(routes.ACCEUIL)
+  const signin = async (emailAddress, password) => {
+      dispatch(SignIn(emailAddress, password))
+      .then(data => { navigation.navigate(routes.ACCEUIL); })
+      .catch(error => { alert(error); });
   };
 
   return (
-    
     <View style={styles.container}>
       <View style={{paddingBottom: '5%'}}>
-        <Image
-          style={styles.logo}
-          source={require('../assets/images.jpeg')}
-        />
+        <Image style={styles.logo} source={require('../assets/images.jpeg')} />
       </View>
 
-      <KeyboardAvoidingView style={{width: '90%'}} >
+      <KeyboardAvoidingView style={{width: '90%'}}>
         <TextInput
           color={colors.primary}
           style={styles.input}
@@ -103,7 +95,7 @@ function Login({navigation}) {
             signin(email, password);
           }}
 
-          //  disabled={username.length<= 0 || password.length<= 0}
+          //  disabled={emailAddress.length<= 0 || password.length<= 0}
         >
           <Text
             style={{
