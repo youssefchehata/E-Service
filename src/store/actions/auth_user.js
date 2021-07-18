@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {Auth, database} from '../../../Setup';
 
 export const SignUp = (email, passswod) => {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     Auth()
       .createUserWithEmailAndPassword(email, passswod)
       .then(() => {
@@ -16,24 +16,20 @@ export const SignUp = (email, passswod) => {
   });
 };
 
-export const SignIn = (email, passswod ,callback) =>async  dispatch=>{
-  
-
-try {
-  const res = await Auth().signInWithEmailAndPassword(email, passswod)
-  console.log("res",res);
-  dispatch({type: T.LOGIN_SUCCESS});
-  callback()
-} catch (error) {
-  alert(error);
-  dispatch({type: "err SignIn" });
-}
-
- 
-
+export const SignIn = (email, passswod, callback) => async dispatch => {
+  try {
+    const res = await Auth().signInWithEmailAndPassword(email, passswod);
+    console.log('res', res);
+    dispatch({type: T.LOGIN_SUCCESS});
+    callback();
+  } catch (error) {
+    alert(error);
+    dispatch({type: 'err SignIn'});
+  }
+};
 
 export const SignOut = () => {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     Auth()
       .signOut()
       .then(() => {
