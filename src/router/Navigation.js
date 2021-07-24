@@ -6,10 +6,11 @@ import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import colors from '../config/colors';
-import Acceuil from '../screens/Acceuil';
+import Acceuil from '../screens/acceuil/Acceuil';
 import Login from '../screens/Login';
 
 // import Header from '../components/Header';
+import Header from '../screens/Header';
 
 
 
@@ -22,7 +23,7 @@ const Stack = createStackNavigator();
 const StackNavigator = () => {
   return (
     <Stack.Navigator
-       initialRouteName="Login"
+       initialRouteName="Acceuil"
       //  initialRouteName="Commencer"
        
       //  initialRouteName="RadioButton"
@@ -35,7 +36,7 @@ const StackNavigator = () => {
         headerStyle: {backgroundColor:colors.white},
         headerTintColor: colors.blue,
         headerLeft: () =>null,
-        // headerTitle:()=><Header   />
+        headerTitle:()=><Header />
         
       })}
       >

@@ -8,3 +8,7 @@ export const LOGIN_SUCCESS   = 'LOGIN_SUCCESS';
 export const SIGNUP          = 'SIGNUP';
 
 export const SIGNOUT         = 'SIGNOUT';
+
+
+
+export const GET_SERVICES         = 'GET_SERVICES';
