@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {View, Text, StyleSheet, FlatList, Dimensions} from 'react-native';
 import ItemAcceuil from './ItemAcceuil';
 import { servicesList } from '../../store/actions/ServicesAction';
+import routes from '../../router/routes';
 
 const Acceuil = ({navigation}) => {
       const {services} = useSelector( (state) => state.services );
@@ -13,7 +14,7 @@ const Acceuil = ({navigation}) => {
 React.useEffect(()=>{
     dispatch(servicesList())
     // servicesList
-})
+},[])
   return (
     <View style={{flex: 1}}>
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -38,7 +39,7 @@ React.useEffect(()=>{
           renderItem={({item}) => (
             <ItemAcceuil
               {...item}
-              onPress={() => navigation.navigate("Login")}
+              onPress={() => navigation.navigate(routes.DETAILS,item)}
               //   onPress={()=> dispatch(deleteItemBasket(List,item.id)) }
             />
           )}

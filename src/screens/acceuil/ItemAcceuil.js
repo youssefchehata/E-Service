@@ -4,7 +4,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import { borderWidth } from 'styled-system';
+
 
 const ItemAcceuil = ({onPress, name, description, image}) => {
   return (

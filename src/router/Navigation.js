@@ -11,6 +11,7 @@ import Login from '../screens/Login';
 
 // import Header from '../components/Header';
 import Header from '../screens/Header';
+import DetailsService from '../screens/DetailsService';
 
 
 
@@ -43,12 +44,14 @@ const StackNavigator = () => {
 
 
       <Stack.Screen name="Acceuil" component={Acceuil}
+      
       // options={({route})=>({title:route.params,headerTitle:()=><Header   route={route} />})}
 
       />
  {/* ------------------------------------commonNav------------------------------------------ */}
-
+ 
         <Stack.Screen name="Login"  options={{headerShown:false}} component={Login } />
+        <Stack.Screen name="DetailsService"  component={DetailsService} />
 
       
 
@@ -80,21 +83,58 @@ const Tab = createBottomTabNavigator();
 export const TabNavigator = () => {
   return (
     <Tab.Navigator
+    // tabBarOptions={{
+    //     activeBackgroundColor:'tomato',
+    //     activeTintColor:'white',
+    //     inactiveBackgroundColor:'#eee',
+    //     inactiveTintColor:"black"
+    // }}
     tabBarOptions={{
-        activeBackgroundColor:'tomato',
-        activeTintColor:'white',
-        inactiveBackgroundColor:'#eee',
-        inactiveTintColor:"black"
+      activeTintColor: '#101010',
+      style: {
+        backgroundColor: '#ffd700',
+        activeBackgroundColor:'tomato'
+      }
     }}
-    
     >
       <Tab.Screen name="Feed" component={StackNavigator} options={{
           tabBarIcon:({size,color})=>(<Text style={{fontSize:size ,color}} >@</Text>)
       }} />
-      <Tab.Screen name="Account" component={Account} />
+      <Tab.Screen name="Acceuil" component={Acceuil} />
+      <Tab.Screen name="DetailsService" component={DetailsService} />
     </Tab.Navigator>
   );
 };
+
+
+
+function MainTabNavigator() {
+  return (
+    <Tab.Navigator
+      tabBarOptions={{
+        activeTintColor: '#101010',
+        style: {
+          backgroundColor: '#ffd700'
+        }
+      }}
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ color, size }) => {
+          let iconName
+          if (route.name == 'Acceuil') {
+            iconName = 'ios-home'
+          } else if (route.name == 'Profile') {
+            iconName = 'ios-person'
+          }
+          // return <Ionicons name={iconName} color={color} size={size} />
+          return null
+        }
+      })}>
+      <Tab.Screen name='Acceuil' component={Acceuil} />
+      {/* <Tab.Screen name='Deta' component={Profile} /> */}
+    </Tab.Navigator>
+  )
+}
+// ==================drawer========================
 const Drawer = createDrawerNavigator();
 
  const DrawerNavigator = () => {
