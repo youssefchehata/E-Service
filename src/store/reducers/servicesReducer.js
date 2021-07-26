@@ -1,8 +1,9 @@
-import {GET_SERVICES} from "../actions/actionTypes"
+import {GET_SERVICES,QTE} from "../actions/actionTypes"
 
 
 const INITIAL_STATE = {
- services:[]
+ services:[],
+ qte:{}
   };
   
   export default (state = INITIAL_STATE, action) => {
@@ -11,10 +12,14 @@ const INITIAL_STATE = {
     switch (action.type) {
       case GET_SERVICES:
         return {...state, services: action.payload};
-
+        case QTE:
+          return {...state, qte: action.payload};
   
       default:
         return state;
     }
   };
+
+
+
   

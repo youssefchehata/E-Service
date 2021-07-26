@@ -2,7 +2,8 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {View, Text, StyleSheet, FlatList, Dimensions} from 'react-native';
 import ItemAcceuil from './ItemAcceuil';
-import { servicesList } from '../../store/actions/ServicesAction';
+// import { servicesList } from '../../store/actions/ServicesAction';
+import { servicesList } from '../../store/actions/index';
 import routes from '../../router/routes';
 
 const Acceuil = ({navigation}) => {
@@ -13,7 +14,7 @@ const Acceuil = ({navigation}) => {
   const List =services
 React.useEffect(()=>{
     dispatch(servicesList())
-    // servicesList
+
 },[])
   return (
     <View style={{flex: 1}}>

@@ -2,6 +2,8 @@ import React, {useEffect, useState, useCallback, memo} from 'react';
 import {useDispatch} from 'react-redux';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {useDimensions} from '@react-native-community/hooks';
+import {quantité} from "../store/actions/index"
+
 
 const ShopButton = ({sendToBasket}) => {
   const {
@@ -14,9 +16,9 @@ const ShopButton = ({sendToBasket}) => {
 
   const {QtName, icon, plustext, btnBasket} = styless;
   const dispatch = useDispatch();
-//   useEffect(() => {
-//     qt_pcs != 0 && dispatch(_B.quantité(qt_pcs, Math.random()));
-//   }, [qt_pcs]);
+    // useEffect(() => {
+    //   qt_pcs != 0 && dispatch(quantité(qt_pcs, Math.random()));
+    // }, [qt_pcs]);
   const iconP = {
     borderRadius: Math.round(w + h) / 2,
     width: w >= 401 ? w / 20 : w / 10,
@@ -54,7 +56,7 @@ const ShopButton = ({sendToBasket}) => {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity onPress={sendToBasket}>
+      <TouchableOpacity onPress={()=>sendToBasket(qt_pcs)}>
         <Text style={btnBasket}> Ajouter au panier</Text>
       </TouchableOpacity>
     </View>
@@ -64,7 +66,7 @@ const styless = StyleSheet.create({
   plustext: {
     fontWeight: 'bold',
     fontSize: 18,
-    color: '#2196F3',
+    color: '#4169E1',
     letterSpacing: 1,
     textAlign: 'center',
   },
@@ -78,8 +80,8 @@ const styless = StyleSheet.create({
 
   QtName: {
     fontWeight: 'bold',
-    fontSize: 15,
-    color: '#2196F3',
+    fontSize: 18,
+    color: '#4169E1',
     letterSpacing: 1,
   },
 
@@ -89,7 +91,7 @@ const styless = StyleSheet.create({
     color: 'white',
     letterSpacing: 1,
 
-    backgroundColor: '#2196F3',
+    backgroundColor: '#4169E1',
     padding: 6,
     borderRadius: 10,
     margin: 10,

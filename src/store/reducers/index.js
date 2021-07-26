@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import authReducer from './authReducer';
+import cartReducer from './cartReducer';
 import servicesReducer from './servicesReducer';
 
 
@@ -7,7 +8,8 @@ import servicesReducer from './servicesReducer';
 
 export default combineReducers({
  auth: authReducer,
- services:servicesReducer
+ services:servicesReducer,
+ cartItems:cartReducer
 
   // places: placesReducer
 });

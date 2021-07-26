@@ -1,14 +1,23 @@
 import React from 'react';
 import {View, Text, Image, ScrollView, StyleSheet} from 'react-native';
 import ShopButton from '../components/ShopButton';
+import {useDispatch,useSelector} from 'react-redux'
+import { addToBasket } from '../store/actions/index';
 import {
+
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
 const DetailsService = props => {
+  const dispatch = useDispatch()
   console.log('itemm details', props.route.params);
   const {name, image, description} = props.route.params;
+  const sendToBasket =(qte)=>{
+   console.log(qte)
+   dispatch(addToBasket({...props.route.params,qte}))
+   
+  }
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -23,7 +32,7 @@ const DetailsService = props => {
         </View>
 
         <View>
-          <ShopButton />
+          <ShopButton sendToBasket={sendToBasket} />
         </View>
 
         <View style={styles.boxImage}>

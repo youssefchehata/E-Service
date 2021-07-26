@@ -12,3 +12,7 @@ export const SIGNOUT         = 'SIGNOUT';
 
 
 export const GET_SERVICES         = 'GET_SERVICES';
+export const QTE         = 'QTE';
+
+export const CART_ADD_ITEM         = 'CART_ADD_ITEM';
+
