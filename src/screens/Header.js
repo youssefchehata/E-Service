@@ -51,7 +51,7 @@ const Header = () => {
         name="shopping-cart"
         size={25}
         color={colors.primary}
-        // onPress={() => navigation.navigate(routes.LOGIN)}
+        onPress={() => navigation.navigate(routes.BASKET)}
       />
       <Icon
       style={styles.icon}

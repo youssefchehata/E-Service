@@ -12,6 +12,7 @@ import Login from '../screens/Login';
 // import Header from '../components/Header';
 import Header from '../screens/Header';
 import DetailsService from '../screens/DetailsService';
+import BasketList from '../screens/basket/BasketList';
 
 
 
@@ -52,9 +53,10 @@ const StackNavigator = () => {
  
         <Stack.Screen name="Login"  options={{headerShown:false}} component={Login } />
         <Stack.Screen name="DetailsService"  component={DetailsService} />
+        <Stack.Screen name="BasketList"  component={BasketList} />
 
       
-
+        
 
       {/* CategoryList:{ screen:CategoryList , navigationOptions: ({navigation}) => ({ headerTintColor:'white', headerStyle:{ backgroundColor:'#2196F3' ,height:undefined}, headerLeft: () =>null, headerTitle:()=><Header  navigation={navigation}/>, }), }, */}
 

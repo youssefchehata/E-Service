@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, Image, ScrollView, StyleSheet} from 'react-native';
-
+import ShopButton from '../components/ShopButton';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -10,19 +10,27 @@ const DetailsService = props => {
   console.log('itemm details', props.route.params);
   const {name, image, description} = props.route.params;
   return (
-    <View style={styles.container}>
-      <View style={styles.boxText}>
-        <Text style={styles.textWrapper}>Service details:{'\n'} {name}</Text>
-      </View>
+    <ScrollView>
+      <View style={styles.container}>
+        <View style={styles.boxText}>
+          <Text style={styles.textWrapper}>
+            Service details:{'\n'} {name}
+          </Text>
+        </View>
 
-      <View style={styles.boxDescrip}>
-        <Text style={styles.textDescrip}>{description}</Text>
-      </View>
+        <View style={styles.boxDescrip}>
+          <Text style={styles.textDescrip}>{description}</Text>
+        </View>
 
-      <View style={styles.boxImage}>
-        <Image style={styles.myImage} source={{uri: `${image}`}} />
+        <View>
+          <ShopButton />
+        </View>
+
+        <View style={styles.boxImage}>
+          <Image style={styles.myImage} source={{uri: `${image}`}} />
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

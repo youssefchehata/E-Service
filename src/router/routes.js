@@ -1,5 +1,6 @@
 export default Object.freeze({
   LOGIN: 'Login',
   ACCEUIL: 'Acceuil',
-  DETAILS:'DetailsService'
+  DETAILS:'DetailsService',
+  BASKET:'BasketList'
 });
