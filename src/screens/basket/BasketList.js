@@ -5,6 +5,7 @@ import {useDeviceOrientation} from '@react-native-community/hooks'
 import { View, Text ,FlatList, StyleSheet,TouchableOpacity} from 'react-native'
 import BasketItem from './BasketItem'
 import  AsyncStorage  from '@react-native-community/async-storage';
+import { getBasket } from '../../store/actions/cartAction'
 // import {submit_cmd,deleteItemBasket,StoreOffLineCmd} from "../../store/actions/fetchShopList"
 // import * as _DocT from '../../store/actions/fetchDocType'
 
@@ -13,8 +14,9 @@ const BasketList = ({navigation}) => {
   // const {window:{width:w,height:h}}=useDimensions()
   const {landscape}=useDeviceOrientation()
     const dispatch = useDispatch()
-    // const List=  useSelector(state=>state.shopList.shoppingBasket) 
-    const List=  [{id:'1'},{id:'2'}]
+    const List=  useSelector(state=>state.cart.cartItems) 
+    console.log("basketView",List)
+    // const List=  [{id:'1'},{id:'2'}]
    
 
    
@@ -36,7 +38,9 @@ const submit =async()=>{
   
 }
 
-
+React.useEffect(()=>{
+  dispatch(getBasket())
+},[])
 
 
 const {title,libellé,libelléName,commanderBtn}=styless
@@ -85,7 +89,7 @@ Votre panier est vide</Text>:
            refreshing={refreshing}
          onRefresh={()=>{List}}  
          data={ List}
-        keyExtractor={(el) => el.id.toString()}
+        // keyExtractor={(el) => el.id.toString()}
         renderItem={({ item }) => (
           <BasketItem {...item} landscape={landscape}
           onPress={()=> dispatch(deleteItemBasket(List,item.id)) }

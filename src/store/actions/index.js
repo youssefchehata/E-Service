@@ -1,2 +1,2 @@
 export { servicesList, quantité} from "./ServicesAction";
-export { addToBasket, } from "./cartAction";
+export { addToBasket, getBasket} from "./cartAction";

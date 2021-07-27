@@ -9,7 +9,7 @@ import servicesReducer from './servicesReducer';
 export default combineReducers({
  auth: authReducer,
  services:servicesReducer,
- cartItems:cartReducer
+ cart:cartReducer
 
   // places: placesReducer
 });

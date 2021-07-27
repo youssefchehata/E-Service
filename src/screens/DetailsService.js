@@ -3,19 +3,17 @@ import {View, Text, Image, ScrollView, StyleSheet} from 'react-native';
 import ShopButton from '../components/ShopButton';
 import {useDispatch,useSelector} from 'react-redux'
 import { addToBasket } from '../store/actions/index';
-import {
-
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp, } from 'react-native-responsive-screen';
+import routes from '../router/routes';
 
 const DetailsService = props => {
   const dispatch = useDispatch()
   console.log('itemm details', props.route.params);
   const {name, image, description} = props.route.params;
+
   const sendToBasket =(qte)=>{
    console.log(qte)
-   dispatch(addToBasket({...props.route.params,qte}))
+   dispatch(addToBasket({...props.route.params,qte}, props.navigation.navigate(routes.ACCEUIL)))
    
   }
   return (
@@ -47,7 +45,8 @@ export default DetailsService;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
+    height:hp('100%'),
     // justifyContent: 'center',
     alignItems: 'center',
     padding: 7,
