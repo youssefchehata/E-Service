@@ -8,6 +8,7 @@ import routes from '../../router/routes';
 
 const Acceuil = ({navigation}) => {
       const {services} = useSelector( (state) => state.services );
+      // const {cartItems}=  useSelector(state=>state.cart) 
 
   const dispatch = useDispatch();
 //   const List = [{id:1,name:'uuu'},{id:2,name:'uuu'}]

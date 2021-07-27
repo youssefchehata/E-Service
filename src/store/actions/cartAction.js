@@ -1,4 +1,4 @@
-import {CART_ADD_ITEM, CART_ITEMS} from './actionTypes';
+import {CART_ADD_ITEM, CART_ITEMS, CART_REMOVE_ITEM} from './actionTypes';
 import AsyncStorage from '@react-native-community/async-storage';
 
 export const addToBasket = (data, callback) => async (dispatch, getState) => {
@@ -27,4 +27,12 @@ export const getBasket = () => async dispatch => {
     alert(error);
     dispatch({type: 'err getBasket'});
   }
+};
+
+export const removeFromCart = id => async (dispatch, getState) => {
+  dispatch({type: CART_REMOVE_ITEM, payload: id});
+  await AsyncStorage.setItem(
+    'cartItems',
+    JSON.stringify(getState().cart.cartItems),
+  );
 };

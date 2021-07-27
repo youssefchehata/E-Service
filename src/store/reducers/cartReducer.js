@@ -1,8 +1,11 @@
-import {CART_ADD_ITEM, CART_ITEMS} from '../actions/actionTypes';
+import {
+  CART_ADD_ITEM,
+  CART_ITEMS,
+  CART_REMOVE_ITEM,
+} from '../actions/actionTypes';
 
 const INITIAL_STATE = {
   cartItems: [],
-  // basketList: [],
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -28,6 +31,11 @@ export default (state = INITIAL_STATE, action) => {
     case CART_ITEMS:
       return {
         cartItems: action.payload,
+      };
+    case CART_REMOVE_ITEM:
+      return {
+        ...state,
+        cartItems: state.cartItems.filter(el => el.id !== action.payload),
       };
     default:
       return state;

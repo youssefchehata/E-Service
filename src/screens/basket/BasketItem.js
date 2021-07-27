@@ -1,59 +1,49 @@
-import React from 'react'
-import { Text, View, StyleSheet,Dimensions,TouchableOpacity} from 'react-native';
+import React from 'react';
+import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import colors from '../../config/colors';
+const BasketItem = ({onPress, name = 'not yet', qte = '0'}) => {
+  const {libellé, libelléName} = styless;
 
+  return (
+    <View style={[libellé]}>
+      <Text style={[libelléName, {width: wp('50%')}]}>{name}</Text>
 
+      <Text style={[libelléName, {width: wp('15%')}]}>{qte}</Text>
 
-const BasketItem = ({onPress,ar_design='not yet',qte_piece='0',qte_colisee='0',ar_ref='0',landscape=false}) => {
+      <TouchableOpacity
+        style={[libelléName, {width: wp('20%'), paddingEnd: 30}]}
+        onPress={onPress}>
+        <Icon
+          style={{alignSelf: 'flex-end'}}
+          name="trash"
+          size={30}
+          color={colors.danger}
+        />
+      </TouchableOpacity>
+    </View>
+  );
+};
 
-    const {libellé,libelléName}=styless
-
-    return (
-
-
-  <View  style={[libellé]}    > 
-
-                         <Text style={[libelléName,{width:'27%',}]}  >{ar_design}</Text> 
-                       { landscape&&  <Text style={[libelléName,{width:'20%',}]}  >{ar_ref}</Text> }
-                        <Text style={[libelléName,{width:'12%',}]} >{qte_colisee}</Text>
-                         <Text style={[libelléName,{width:'12%',}]}>{qte_piece}</Text> 
-                          
-                       <TouchableOpacity
-                         style={[libelléName,{width:'23%',paddingEnd:30}]}   onPress={onPress} ><Text style={{alignSelf:'flex-end'}}>delete</Text></TouchableOpacity>   
-  
-        </View>
-
-    )
-}
- 
 const styless = StyleSheet.create({
-    title: { fontWeight: 'bold', fontSize: Dimensions.get('window').width >= 401 ? 12 : 7.2, color: '#2196F3', letterSpacing: 1,paddingVertical:18, },
+  libellé: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: wp('100%'),
+  },
+  libelléName: {
+    paddingVertical: 18,
 
-
-
-    libellé:{ flexDirection:'row', justifyContent:'space-around' ,width:'100%'}
-  ,
-
-  
-  libelléName:{
-    paddingVertical:18,
-    
     fontWeight: 'bold',
     letterSpacing: 1,
-    color: '#2196F3', 
-    fontSize: 15,
-    textAlign:'center',
-    
-  
+    color: '#4169E1',
+    fontSize: 20,
+    textAlign: 'center',
   },
+});
 
-
-  
-  
-    
-    
-       
-    
-    });
-  
-
-export default BasketItem
+export default BasketItem;
