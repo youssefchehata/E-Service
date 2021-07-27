@@ -20,7 +20,7 @@ export const getBasket = () => async dispatch => {
   try {
     const storedCache = await AsyncStorage.getItem('cartItems');
     const GetStoredCache = await JSON.parse(storedCache);
-    if(!GetStoredCache)return null
+    if (!GetStoredCache) return null;
     dispatch({type: CART_ITEMS, payload: GetStoredCache});
     //will get in Acceuil and basket view
   } catch (error) {
