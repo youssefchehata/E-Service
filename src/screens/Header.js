@@ -28,33 +28,21 @@ const Header = () => {
         color={colors.primary}
         onPress={() => navigation.navigate(routes.LOGIN)}
       />
-      <Icon
-        style={styles.icon}
-        name="sign-out"
-        size={25}
-        color={colors.primary}
-        onPress={() =>
-          dispatch(
-            SignOut( () => {
-              navigation.navigate(routes.LOGIN);
-            }),
-          )
-        }
-      />
-      <Icon
+
+      {/* <Icon
         style={styles.icon}
         name="cart-plus"
         size={25}
         color={colors.primary}
         // onPress={() => navigation.navigate(routes.LOGIN)}
-      />
-      <Icon
+      /> */}
+      {/* <Icon
         style={styles.icon}
         name="trash"
         size={25}
         color={colors.primary}
         // onPress={() => navigation.navigate(routes.LOGIN)}
-      />
+      /> */}
       <Icon
         style={styles.icon}
         name="shopping-cart"
@@ -62,19 +50,35 @@ const Header = () => {
         color={colors.primary}
         onPress={() => navigation.navigate(routes.BASKET)}
       />
-      <Icon
+      {/* <Icon
         style={styles.icon}
         name="plus-circle"
         size={25}
         color={colors.primary}
         // onPress={() => navigation.navigate(routes.LOGIN)}
-      />
-      <Icon
+      /> */}
+      {/* <Icon
         style={styles.icon}
         name="eye"
         size={25}
         color={colors.primary}
         // onPress={() => navigation.navigate(routes.LOGIN)}
+      /> */}
+
+
+<Icon
+        style={styles.icon}
+        name="sign-out"
+        size={25}
+        color={colors.primary}
+        onPress={() =>
+          dispatch(
+            SignOut( () => {
+              // navigation.navigate(routes.LOGIN);
+              alert("sigOut")
+            }),
+          )
+        }
       />
     </View>
   );
