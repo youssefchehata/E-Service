@@ -3,19 +3,19 @@ import {Alert} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Auth, database} from '../../../Setup';
 
-export const SignUp = (email, passswod) => {
-  return new Promise(function (resolve, reject) {
-    Auth()
-      .createUserWithEmailAndPassword(email, passswod)
-      .then(() => {
-        resolve('Sign Up Successfully');
-      })
-      .catch(error => {
-        reject(error);
-      });
-  });
-};
 
+export const SignUp = (email, passswod,callback)=> async dispatch =>  {
+  try {
+    const res = await Auth().createUserWithEmailAndPassword(email, passswod)
+    console.log('res', res);
+    dispatch({type: T.SIGNUP});
+    callback();
+  } catch (error) {
+    alert(error);
+    dispatch({type: 'err SIGNUP'});
+  }
+
+};
 export const SignIn = (email, passswod, callback) => async dispatch => {
   try {
     const res = await Auth().signInWithEmailAndPassword(email, passswod);
@@ -28,18 +28,28 @@ export const SignIn = (email, passswod, callback) => async dispatch => {
   }
 };
 
-export const SignOut = () => {
-  return new Promise(function (resolve, reject) {
-    Auth()
-      .signOut()
-      .then(() => {
-        resolve('Sign Out Successfully');
-      })
-      .catch(error => {
-        reject(error);
-      });
-  });
+
+export const SignOut = (callback) => async dispatch => {
+  try {
+    const user = Auth().currentUser;
+    if (user) {
+      await Auth().signOut()
+    } 
+    // const tt = await Auth().currentUser;
+    // console.log('tt', tt._user.uid);
+    // const res = await Auth().signOut()
+  
+    console.log('res', user);
+    dispatch({type: T.SIGNOUT});
+    callback();
+  } catch (error) {
+    alert(error);
+    dispatch({type: 'err SIGNOUT'});
+  }
+
 };
+// ===================================
+
 export const signin = (username, password) => async dispatch => {
   try {
     // await AsyncStorage.setItem('token', 'res.data.token');
@@ -72,10 +82,4 @@ export const signout = () => async dispatch => {
   // navigate('Login');
 };
 
-export const signupUser = (username, password) => async dispatch => {
-  try {
-    dispatch({type: T.SIGNUP});
-  } catch (error) {
-    dispatch({type: T.ADD_ERROR, payload: 'Invalid register'});
-  }
-};
+

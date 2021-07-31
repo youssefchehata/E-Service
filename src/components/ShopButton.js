@@ -5,12 +5,16 @@ import {useDimensions} from '@react-native-community/hooks';
 import {quantité} from "../store/actions/index"
 
 
-const ShopButton = ({sendToBasket}) => {
-  const {
-    window: {width: w, height: h},
-  } = useDimensions();
+const ShopButton = ({sendToBasket,quantité}) => {
+  const { window: {width: w, height: h}, } = useDimensions();
 
   const [qt_pcs, setqt_pcs] = useState(0);
+
+   useEffect(() => {
+       setqt_pcs(quantité)
+   }, [quantité]);
+
+
 
   const postiveqt = qt_pcs <= 0 ? 0 : qt_pcs - 1;
 

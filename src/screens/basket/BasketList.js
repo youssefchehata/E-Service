@@ -10,6 +10,9 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Auth } from '../../../Setup';
+import { addorders } from '../../store/actions/index';
+import routes from '../../router/routes';
 
 const BasketList = ({navigation}) => {
   const [refreshing] = useState(false);
@@ -20,35 +23,24 @@ const BasketList = ({navigation}) => {
   // console.log("basketView",List)
   // const List=  [{id:'1'},{id:'2'}]
 
-  // const submit = async () => {
-  //   const nav =
-  //     currentClient === 'commercial'
-  //       ? navigation.navigate('ClientsList')
-  //       : navigation.navigate('CategoryList');
-  //   const off = await AsyncStorage.getItem('CONNECTION');
-
-  //   if (off === 'true') {
-  //     dispatch(
-  //       submit_cmd(List, documentType, IdClt, () => {
-  //         nav;
-  //       }),
-  //     );
-  //   } else {
-  //     dispatch(
-  //       StoreOffLineCmd(List, documentType, IdClt, () => {
-  //         nav;
-  //       }),
-  //     );
-  //   }
-  // };
 
   React.useEffect(() => {
     dispatch(getBasket());
+  
   }, []);
 
 
 const submit=()=>{
-  alert('submit')
+  const user = Auth().currentUser;
+  console.log('userrr',user?.uid)
+  if(user){
+    alert('submit')
+    dispatch(addorders())
+    
+  }else{
+    navigation.navigate(routes.LOGIN)
+  }
+ 
 }
 
 

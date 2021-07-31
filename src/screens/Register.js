@@ -24,9 +24,9 @@ import {
   listenOrientationChange as lor,
   removeOrientationListener as rol,
 } from 'react-native-responsive-screen';
-import {SignIn} from '../store/actions/auth_user';
+import {SignUp} from '../store/actions/auth_user';
 
-function Login({navigation}) {
+function Register({navigation}) {
   // const {
   //   window: {width: w},
   // } = useDimensions();
@@ -48,7 +48,7 @@ function Login({navigation}) {
 
   const signin = async (emailAddress, password) => {
     dispatch(
-      SignIn(emailAddress, password, () => {
+        SignUp(emailAddress, password, () => {
         navigation.navigate(routes.ACCEUIL);
       }),
     );
@@ -114,7 +114,7 @@ function Login({navigation}) {
       </View>
       <TouchableOpacity style={{alignSelf:'flex-end',marginTop:40,}}
           onPress={() => {
-            navigation.navigate(routes.REGISTER)
+            navigation.navigate(routes.LOGIN)
           }}
 
       >
@@ -127,7 +127,7 @@ function Login({navigation}) {
               padding: '5%',
               borderRadius:20
             }}
-        >Register</Text>
+        >Login</Text>
       </TouchableOpacity>
     </View>
   );
@@ -158,4 +158,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default Register;

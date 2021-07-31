@@ -9,6 +9,23 @@ import routes from '../router/routes';
 const DetailsService = props => {
   const dispatch = useDispatch()
   console.log('itemm details', props.route.params);
+// =======================================================================
+  const {cartItems} = useSelector(state => state.cart);
+
+  const existInBasket=cartItems.find(x => x.id === props.route.params.id);
+  const [qt_pcs, setqt_pcs] = React.useState(0);
+React.useEffect(()=>{
+if(existInBasket){
+  setqt_pcs(existInBasket.qte)
+}else{
+  null
+}
+
+},[])
+  //  console.log("exisst",existInBasket.qte)
+
+// ==================================================================
+
   const {name, image, description} = props.route.params;
 
   const sendToBasket =(qte)=>{
@@ -30,7 +47,7 @@ const DetailsService = props => {
         </View>
 
         <View>
-          <ShopButton sendToBasket={sendToBasket} />
+          <ShopButton sendToBasket={sendToBasket} quantité={qt_pcs}/>
         </View>
 
         <View style={styles.boxImage}>

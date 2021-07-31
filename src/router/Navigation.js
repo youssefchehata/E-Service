@@ -13,6 +13,7 @@ import Login from '../screens/Login';
 import Header from '../screens/Header';
 import DetailsService from '../screens/DetailsService';
 import BasketList from '../screens/basket/BasketList';
+import Register from '../screens/Register';
 
 
 
@@ -51,7 +52,8 @@ const StackNavigator = () => {
       />
  {/* ------------------------------------commonNav------------------------------------------ */}
  
-        <Stack.Screen name="Login"  options={{headerShown:false}} component={Login } />
+        <Stack.Screen name="Login"  options={{headerShown:true}} component={Login } />
+        <Stack.Screen name="Register"  options={{headerShown:false}} component={Register } />
         <Stack.Screen name="DetailsService"  component={DetailsService} />
         <Stack.Screen name="BasketList"  component={BasketList} />
 
