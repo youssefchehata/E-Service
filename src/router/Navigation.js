@@ -14,6 +14,7 @@ import Header from '../screens/Header';
 import DetailsService from '../screens/DetailsService';
 import BasketList from '../screens/basket/BasketList';
 import Register from '../screens/Register';
+import OrdersList from '../screens/orders/OrdersList';
 
 
 
@@ -56,6 +57,9 @@ const StackNavigator = () => {
         <Stack.Screen name="Register"  options={{headerShown:false}} component={Register } />
         <Stack.Screen name="DetailsService"  component={DetailsService} />
         <Stack.Screen name="BasketList"  component={BasketList} />
+        <Stack.Screen name="OrdersList"  component={OrdersList} />
+
+        
 
       
         

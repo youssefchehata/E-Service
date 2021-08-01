@@ -8,7 +8,7 @@ const Lists = () => {
     const [Description, setDescription] = React.useState('');
     const [users, setUsers] = React.useState([]);
 
-  console.log("orders",users);
+  console.log("lists",users);
 
   const savetoLists = () => {
     submitList(Id, Name, Description)
@@ -25,7 +25,7 @@ const Lists = () => {
 
 //real time database
     React.useEffect(() => {
-        const userRef = database().ref('/lists');
+        const userRef = database().ref('/ordersItems');
         const OnLoadingListener = userRef.on('value', snapshot => {
           setUsers([]);
           snapshot.forEach(function (childSnapshot) {

@@ -57,13 +57,13 @@ const Header = () => {
         color={colors.primary}
         // onPress={() => navigation.navigate(routes.LOGIN)}
       /> */}
-      {/* <Icon
+      <Icon
         style={styles.icon}
         name="eye"
         size={25}
         color={colors.primary}
-        // onPress={() => navigation.navigate(routes.LOGIN)}
-      /> */}
+        onPress={() => navigation.navigate(routes.ORDERS)}
+      />
 
 
 <Icon

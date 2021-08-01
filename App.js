@@ -16,7 +16,8 @@ const newColorTheme = {
 };
 const theme = extendTheme({colors: newColorTheme});
 const App = () => {
-  return (<Navigation/>
+  return (
+  <Navigation/>
     // <ScrollView>
     //   <NativeBaseProvider theme={theme}>
     //     <AuthScreen />

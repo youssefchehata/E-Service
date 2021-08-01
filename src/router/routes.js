@@ -3,5 +3,8 @@ export default Object.freeze({
   REGISTER: 'Register',
   ACCEUIL: 'Acceuil',
   DETAILS:'DetailsService',
-  BASKET:'BasketList'
+  BASKET:'BasketList',
+  ORDERS:'OrdersList'
+
+  
 });
