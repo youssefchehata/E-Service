@@ -25,6 +25,7 @@ import {
   removeOrientationListener as rol,
 } from 'react-native-responsive-screen';
 import {SignIn} from '../store/actions/auth_user';
+import FacebookBtn from '../components/FacebookBtn';
 
 function Login({navigation}) {
   // const {
@@ -129,6 +130,7 @@ function Login({navigation}) {
             }}
         >Register</Text>
       </TouchableOpacity>
+      <FacebookBtn/>
     </View>
   );
 }
