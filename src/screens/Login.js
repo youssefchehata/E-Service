@@ -26,6 +26,7 @@ import {
 } from 'react-native-responsive-screen';
 import {SignIn} from '../store/actions/auth_user';
 import FacebookBtn from '../components/FacebookBtn';
+import {Auth} from '../../Setup';
 
 function Login({navigation}) {
   // const {
@@ -47,6 +48,10 @@ function Login({navigation}) {
   const [email, onChangeEmail] = React.useState('');
   const [password, onChangePassword] = React.useState('');
 
+  const [user, setUser] = React.useState();
+
+  console.log('user', user);
+  
   const signin = async (emailAddress, password) => {
     dispatch(
       SignIn(emailAddress, password, () => {
@@ -54,6 +59,13 @@ function Login({navigation}) {
       }),
     );
   };
+  const onAuthStateChanged = user => { setUser(user); };
+
+  React.useEffect(() => {
+    const subscriber = Auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber;
+  }, []);
+
 
   return (
     <View style={styles.container}>
@@ -62,8 +74,7 @@ function Login({navigation}) {
       </View>
 
       <KeyboardAvoidingView style={{width: '90%'}}>
-        <TextInput
-          color={colors.primary}
+        <TextInput color={colors.primary}
           style={styles.input}
           onChangeText={onChangeEmail}
           value={email}
@@ -113,24 +124,25 @@ function Login({navigation}) {
           </Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={{alignSelf:'flex-end',marginTop:40,}}
-          onPress={() => {
-            navigation.navigate(routes.REGISTER)
-          }}
-
-      >
-        <Text   style={{
-              fontWeight: 'bold',
-              fontSize: 15,
-              color: 'white',
-              letterSpacing: 2,
-              backgroundColor: '#2196F3',
-              padding: '5%',
-              borderRadius:20
-            }}
-        >Register</Text>
+      <TouchableOpacity
+        style={{alignSelf: 'flex-end', marginTop: 40}}
+        onPress={() => {
+          navigation.navigate(routes.REGISTER);
+        }}>
+        <Text
+          style={{
+            fontWeight: 'bold',
+            fontSize: 15,
+            color: 'white',
+            letterSpacing: 2,
+            backgroundColor: '#2196F3',
+            padding: '5%',
+            borderRadius: 20,
+          }}>
+          Register
+        </Text>
       </TouchableOpacity>
-      <FacebookBtn/>
+      <FacebookBtn />
     </View>
   );
 }

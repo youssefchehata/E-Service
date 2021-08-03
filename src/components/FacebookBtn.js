@@ -1,33 +1,78 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
-import { LoginButton, AccessToken } from 'react-native-fbsdk-next';
+import React from 'react';
+import {View, TouchableOpacity, Text} from 'react-native';
+import {LoginButton, AccessToken, LoginManager} from 'react-native-fbsdk-next';
+import {Auth} from '../../Setup';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import colors from '../config/colors';
+import routes from '../router/routes';
+import {useNavigation} from '@react-navigation/core';
+const FacebookBtn = () => {
+  const [user, setUser] = React.useState();
+  console.log('fbkkk', user);
+  const navigation = useNavigation();
+  const onAuthStateChanged = user => {
+    // alert(user);
+    console.log(user);
+    setUser(user);
+  };
 
- class FacebookBtn extends Component {
-  render() {
-    return (
-      <View>
-        <LoginButton
-          onLoginFinished={
-            (error, result) => {
-              if (error) {
-                console.log("login has error: " + result.error);
-              } else if (result.isCancelled) {
-                console.log("login is cancelled.");
-              } else {
-                AccessToken.getCurrentAccessToken().then(
-                  (data) => {
-                    console.log(data.accessToken.toString())
-                  }
-                )
-              }
-            }
-          }
-          onLogoutFinished={() => console.log("logout.")}/>
-      </View>
+  React.useEffect(() => {
+    const subscriber = Auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber;
+  }, []);
+
+  async function onFacebookButtonPress() {
+    // Attempt login with permissions
+    const result = await LoginManager.logInWithPermissions([
+      'public_profile',
+      'email',
+    ]);
+
+    if (result.isCancelled) {
+      throw 'User cancelled the login process';
+    }
+
+    // Once signed in, get the users AccesToken
+    const data = await AccessToken.getCurrentAccessToken();
+
+    if (!data) {
+      throw 'Something went wrong obtaining access token';
+    }
+
+    // Create a Firebase credential with the AccessToken
+    const facebookCredential = Auth.FacebookAuthProvider.credential(
+      data.accessToken,
     );
+    console.log('hhhhlogfbk', facebookCredential);
+    // Sign-in the user with the credential
+    return Auth().signInWithCredential(facebookCredential);
   }
+  const x = () => {
+    () => onFacebookButtonPress();
+  };
+  return (
+    <TouchableOpacity
+      style={{flexDirection: 'row'}}
+      onPress={() => {
+        onFacebookButtonPress();
+        navigation.navigate(routes.ACCEUIL)
+      }}>
+      <Text>
+        <Icon
+          style={{}}
+          name="facebook-square"
+          size={25}
+          color={colors.primary}
+          // onPress={() => navigation.navigate(routes.ACCEUIL)}
+        />
+         {' '}
+        facebook
+      </Text>
+      <Text style={{alignSelf: 'center'}}></Text>
+    </TouchableOpacity>
+  );
 };
-export default FacebookBtn
+export default FacebookBtn;
 
 // import React from 'react';
 // import {connect} from 'react-redux';
@@ -107,7 +152,7 @@ export default FacebookBtn
 
 //   return (
 //     <>
-     
+
 //       <TouchableOpacity
 //         style={{flexDirection: 'row'}}
 //         onPress={() => {

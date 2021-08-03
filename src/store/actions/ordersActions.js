@@ -25,8 +25,9 @@ export const addorders = callback => async (dispatch, getState) => {
       // .ref(`ordersItems/${user_Id}`)
       .ref(`ordersItems/${user_Id}`)
       .push({...data});
-    // .push(JSON.stringify(data));
-    // .push([...[data,dataToSave]]);
+      await AsyncStorage.removeItem('cartItems');
+      dispatch({type: T.CART_ITEMS, payload: []});
+      dispatch({type: "addorders", });
 
     // JSON.stringify
     // callback();
