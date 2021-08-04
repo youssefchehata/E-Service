@@ -15,6 +15,7 @@ import DetailsService from '../screens/DetailsService';
 import BasketList from '../screens/basket/BasketList';
 import Register from '../screens/Register';
 import OrdersList from '../screens/orders/OrdersList';
+import DrawerMenu from '../components/drawerMenu/DrawerMenu';
 
 
 
@@ -164,8 +165,8 @@ const Nav = () => {
     <NavigationContainer 
     //  theme={navigationTheme}
       >
-      <StackNavigator />
-      {/* <DrawerNavigator /> */}
+      {/* <StackNavigator /> */}
+      <DrawerNavigator />
       {/* <TabNavigator/> */}
     </NavigationContainer>
   );

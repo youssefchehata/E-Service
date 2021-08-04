@@ -6,28 +6,38 @@ import {useRoute} from '@react-navigation/native';
 import colors from '../config/colors';
 import routes from '../router/routes';
 import {useDispatch, useSelector} from 'react-redux';
-import { SignOut } from '../store/actions/auth_user';
+import {SignOut} from '../store/actions/auth_user';
+import {NavigationDrawerButton} from '../components/drawerMenu/NavigationDrawerButton';
+import {Auth} from '../../Setup';
 const Header = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const route = useRoute();
   let titleNav = route.name;
+
+  const [user, setUser] = React.useState();
+
+  const onAuthStateChanged = user => {
+    setUser(user);
+  };
+
+  React.useEffect(() => {
+    const subscriber = Auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber;
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Icon
-        style={styles.icon}
-        name="home"
-        size={25}
-        color={colors.primary}
-        onPress={() => navigation.navigate(routes.ACCEUIL)}
-      />
-      <Icon
-        style={styles.icon}
-        name="sign-in"
-        size={25}
-        color={colors.primary}
-        onPress={() => navigation.navigate(routes.LOGIN)}
-      />
+      <NavigationDrawerButton navigationProps={navigation} />
+      {titleNav != routes.ACCEUIL && (
+        <Icon
+          style={styles.icon}
+          name="home"
+          size={25}
+          color={colors.primary}
+          onPress={() => navigation.navigate(routes.ACCEUIL)}
+        />
+      )}
 
       {/* <Icon
         style={styles.icon}
@@ -43,13 +53,15 @@ const Header = () => {
         color={colors.primary}
         // onPress={() => navigation.navigate(routes.LOGIN)}
       /> */}
-      <Icon
-        style={styles.icon}
-        name="shopping-cart"
-        size={25}
-        color={colors.primary}
-        onPress={() => navigation.navigate(routes.BASKET)}
-      />
+      {titleNav != routes.BASKET && (
+        <Icon
+          style={styles.icon}
+          name="shopping-cart"
+          size={25}
+          color={colors.primary}
+          onPress={() => navigation.navigate(routes.BASKET)}
+        />
+      )}
       {/* <Icon
         style={styles.icon}
         name="plus-circle"
@@ -65,21 +77,33 @@ const Header = () => {
         onPress={() => navigation.navigate(routes.ORDERS)}
       />
 
-
-<Icon
-        style={styles.icon}
-        name="sign-out"
-        size={25}
-        color={colors.primary}
-        onPress={() =>
-          dispatch(
-            SignOut( () => {
-              // navigation.navigate(routes.LOGIN);
-              alert("sigOut")
-            }),
-          )
-        }
-      />
+      <View>
+        {user ? (
+          <Icon
+            style={styles.icon}
+            name="sign-out"
+            size={25}
+            color={colors.primary}
+            onPress={() =>
+              dispatch(
+                SignOut(() => {
+                  // navigation.navigate(routes.LOGIN);
+                  alert('sigOut');
+                }),
+                setUser(),
+              )
+            }
+          />
+        ) : (
+          <Icon
+            style={styles.icon}
+            name="sign-in"
+            size={25}
+            color={colors.primary}
+            onPress={() => navigation.navigate(routes.LOGIN)}
+          />
+        )}
+      </View>
     </View>
   );
 };
