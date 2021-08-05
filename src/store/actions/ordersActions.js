@@ -58,7 +58,7 @@ export const ordersList = () => async dispatch => {
         });
 
         dispatch({type: T.ORDERS, payload: list});
-        console.log(list);
+        console.log('totallallcmd new reducer to do',list?.map(el => el?.total) ?.reduce((a, b) => a + b, 0)) 
       });
     });
   } catch (error) {
