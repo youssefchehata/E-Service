@@ -32,7 +32,7 @@ const BasketList = ({navigation}) => {
 
 const submit=()=>{
   const user = Auth().currentUser;
-  console.log('userrr',user?.uid)
+  
   if(user){
     alert('submit')
     dispatch(addorders())

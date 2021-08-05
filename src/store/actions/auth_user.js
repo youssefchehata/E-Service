@@ -35,9 +35,7 @@ export const SignOut = (callback) => async dispatch => {
     if (user) {
       await Auth().signOut()
     } 
-    // const tt = await Auth().currentUser;
-    // console.log('tt', tt._user.uid);
-    // const res = await Auth().signOut()
+
   
     console.log('res', user);
     dispatch({type: T.SIGNOUT});
@@ -50,17 +48,6 @@ export const SignOut = (callback) => async dispatch => {
 };
 // ===================================
 
-export const signin = (username, password) => async dispatch => {
-  try {
-    // await AsyncStorage.setItem('token', 'res.data.token');
-
-    dispatch({type: T.LOGIN_SUCCESS});
-  } catch (error) {
-    const alert = Alert.alert('Error', 'check your email/password', [
-      {text: 'Okay'},
-    ]);
-  }
-};
 
 export const AutomaticSignIn = callback => async dispatch => {
   // const token = await AsyncStorage.getItem('token');
@@ -74,12 +61,6 @@ export const AutomaticSignIn = callback => async dispatch => {
   // }
 };
 
-export const signout = () => async dispatch => {
-  // await AsyncStorage.removeItem('token');
-  // dispatch({type: SIGNOUT_USER});
-  // dispatch(await clearCurrentClientType());
-  // await AsyncStorage.removeItem('cache/api/secured/commercial/client');
-  // navigate('Login');
-};
+
 
 

@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 import rootReducer from './reducers';
 
 initalStore={
-  auth:"test"
+  // auth:"test"
  }
  
  const middleware = [thunk];

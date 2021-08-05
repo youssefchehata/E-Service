@@ -10,7 +10,7 @@ const Profile = () => {
 
   const [user, setUser] = React.useState();
 
-  console.log('user', user);
+ 
 
   const onAuthStateChanged = user => {
     setUser(user);
@@ -19,7 +19,7 @@ const Profile = () => {
   React.useEffect(() => {
     const subscriber = Auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber;
-  }, []);
+  }, [user]);
   if (user) {
     return (
       <View style={{paddingVertical: 30}}>
