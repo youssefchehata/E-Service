@@ -25,9 +25,9 @@ export const addorders = callback => async (dispatch, getState) => {
       // .ref(`ordersItems/${user_Id}`)
       .ref(`ordersItems/${user_Id}`)
       .push({...data});
-      await AsyncStorage.removeItem('cartItems');
-      dispatch({type: T.CART_ITEMS, payload: []});
-      dispatch({type: "addorders", });
+    await AsyncStorage.removeItem('cartItems');
+    dispatch({type: T.CART_ITEMS, payload: []});
+    dispatch({type: 'addorders'});
 
     // JSON.stringify
     // callback();
@@ -39,15 +39,23 @@ export const addorders = callback => async (dispatch, getState) => {
 
 export const ordersList = () => async dispatch => {
   try {
-   
-    const userRef = database().ref('/ordersItems/YmHqmOmiFJRFNbxcJaHQ6yzoPhg1');
     const userID = Auth().currentUser.uid;
-   
+    const userRef = database().ref(`/ordersItems/${userID}`);
+
     const list = [];
     //child_added
     userRef.on('value', snapshot => {
       snapshot.forEach(child => {
-        list.push({orderId: child.key,userID:userID, data: child.val()});
+        // list.push({orderId: child.key,userID:userID, data: child.val()});
+        list.push({
+          total: child
+            .val()
+            ?.map(el => el?.qte * el?.prix)
+            ?.reduce((a, b) => a + b, 0),
+          orderId: child.key,
+          userID: userID,
+          data: child.val(),
+        });
 
         dispatch({type: T.ORDERS, payload: list});
         console.log(list);

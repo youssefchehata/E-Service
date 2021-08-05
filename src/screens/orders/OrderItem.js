@@ -6,7 +6,7 @@ import {
 } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import colors from '../../config/colors';
-const OrderItem = ({onPress, orderId = 'not yet', qte = '0'}) => {
+const OrderItem = ({onPress, orderId = 'not yet', total = '0'}) => {
   const  name=orderId
   const {libellé, libelléName} = styless;
 
@@ -14,7 +14,7 @@ const OrderItem = ({onPress, orderId = 'not yet', qte = '0'}) => {
     <View style={[libellé]}>
       <Text style={[libelléName, {width: wp('50%')}]}>{name}</Text>
 
-      <Text style={[libelléName, {width: wp('15%')}]}>{qte}</Text>
+      <Text style={[libelléName, {width: wp('15%')}]}>{total}</Text>
 
       <TouchableOpacity
         style={[libelléName, {width: wp('20%'), paddingEnd: 30}]}
@@ -29,7 +29,7 @@ const OrderItem = ({onPress, orderId = 'not yet', qte = '0'}) => {
     </View>
   );
 };
-
+ 
 const styless = StyleSheet.create({
   libellé: {
     flexDirection: 'row',
