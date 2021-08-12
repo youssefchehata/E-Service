@@ -62,7 +62,7 @@ export const ordersList = () => async dispatch => {
       });
     });
   } catch (error) {
-    alert(error);
+    // alert(error);
     dispatch({type: 'err get orders'});
   }
 };

@@ -29,6 +29,7 @@ import {SignIn} from '../store/actions/auth_user';
 import FacebookBtn from '../components/FacebookBtn';
 import {Auth} from '../../Setup';
 import GoogleSignIn from '../components/GoogleSignIn';
+import AnimationBackGround from '../components/animation/Animation';
 
 function Login({navigation}) {
   // const {
@@ -71,7 +72,7 @@ function Login({navigation}) {
 
   return (
     <ScrollView>
-
+     <AnimationBackGround/>
   
     <View style={styles.container}>
       <View style={{paddingBottom: '5%'}}>

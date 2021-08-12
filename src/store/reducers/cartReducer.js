@@ -25,7 +25,7 @@ export default (state = INITIAL_STATE, action) => {
       } else {
         return {
           ...state,
-          cartItems: [...state.cartItems, item],
+          cartItems: [item],
         };
       }
     case CART_ITEMS:

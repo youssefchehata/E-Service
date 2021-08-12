@@ -11,6 +11,7 @@ import {
 } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import OrderItem from './OrderItem';
+import AnimationBackGround from '../../components/animation/Animation';
 const OrdersList = () => {
   const [refreshing] = React.useState(false);
           const List=  useSelector(state=>state.orders.ordersList) 
@@ -27,6 +28,7 @@ const {title, libellé, libelléName, commanderBtn} = styless;
 const dis = List?.length === 0 && {opacity: 0.5};
     return (
       <>
+       <AnimationBackGround/>
       <View style={{height: hp('100%'), paddingBottom: '5%'}}>
         {List && List?.length <= 0 ? (
           <Text style={title}>Votre liste d'ordre est vide</Text>

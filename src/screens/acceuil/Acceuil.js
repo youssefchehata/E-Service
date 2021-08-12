@@ -5,6 +5,7 @@ import ItemAcceuil from './ItemAcceuil';
 // import { servicesList } from '../../store/actions/ServicesAction';
 import { servicesList,getBasket } from '../../store/actions/index';
 import routes from '../../router/routes';
+import AnimationBackGround from '../../components/animation/Animation';
 
 const Acceuil = ({navigation}) => {
       const {services} = useSelector( (state) => state.services );
@@ -21,6 +22,7 @@ React.useEffect(()=>{
 },[])
   return (
     <View style={{flex: 1}}>
+      <AnimationBackGround/>
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
         <Text style={styles.bienvenue}>
           Bienvenue {'\n'}

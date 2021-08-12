@@ -30,7 +30,7 @@ if(existInBasket){
 
   const sendToBasket =(qte)=>{
    console.log(qte)
-   dispatch(addToBasket({...props.route.params,qte}, props.navigation.navigate(routes.ACCEUIL)))
+   dispatch(addToBasket({...props.route.params,qte}, props.navigation.navigate(routes.BASKET)))
    
   }
   return (
@@ -47,7 +47,7 @@ if(existInBasket){
         </View>
 
         <View>
-          <ShopButton sendToBasket={sendToBasket} quantité={qt_pcs}/>
+          <ShopButton sendToBasket={sendToBasket} quantité={qt_pcs}  />
         </View>
 
         <View style={styles.boxImage}>

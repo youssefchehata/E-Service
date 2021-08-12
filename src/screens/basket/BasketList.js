@@ -13,6 +13,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Auth } from '../../../Setup';
 import { addorders } from '../../store/actions/index';
 import routes from '../../router/routes';
+import AnimationBackGround from '../../components/animation/Animation';
 
 const BasketList = ({navigation}) => {
   const [refreshing] = useState(false);
@@ -49,6 +50,7 @@ const submit=()=>{
   const dis = List?.length === 0 && {opacity: 0.5};
   return (
     <>
+     <AnimationBackGround/>
       <View style={{height: hp('100%'), paddingBottom: '5%'}}>
         {List && List?.length <= 0 ? (
           <Text style={title}>Votre panier est vide</Text>
