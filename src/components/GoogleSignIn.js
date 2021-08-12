@@ -2,8 +2,10 @@ import React from 'react'
 import { StyleSheet, Text, View,Button } from 'react-native'
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { Auth } from '../../Setup';
-
+import {useNavigation} from '@react-navigation/core';
+import routes from '../router/routes';
 const GoogleSignIn = () => {
+  const navigation = useNavigation();
   const [user, setUser] = React.useState();
  
 
@@ -35,7 +37,9 @@ const GoogleSignIn = () => {
         <Button
       title="Google Sign-In"
       // onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}
-      onPress={() => onGoogleButtonPress()}
+      onPress={() => {onGoogleButtonPress()
+        navigation.navigate(routes.ACCEUIL)
+      }}
     />
     )
 }
