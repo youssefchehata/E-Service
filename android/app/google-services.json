@@ -71,6 +71,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279739746148:android:51389f19c2c2bd036d9c71",
+        "android_client_info": {
+          "package_name": "com.trami.e_service.samgatesservice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "279739746148-07qvuj6oof50qi5nopdv21g6355v1erp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3_g-pj63aKbGO1i8L-3m7wQ7qvJ1cY-Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "279739746148-07qvuj6oof50qi5nopdv21g6355v1erp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

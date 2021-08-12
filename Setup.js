@@ -6,6 +6,13 @@ import Auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 import storage from '@react-native-firebase/storage';
 import firestore from '@react-native-firebase/firestore';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+
+GoogleSignin.configure({
+  webClientId: '279739746148-07qvuj6oof50qi5nopdv21g6355v1erp.apps.googleusercontent.com',
+});
+
+
 const firebaseConfig = {
   apiKey: 'AIzaSyASs_J51NAqyyQM4z_eFACFxyPT7gBbZ9Q',
   authDomain: 'e-service-2e1c9.firebaseapp.com',

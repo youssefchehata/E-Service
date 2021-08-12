@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Text,
   KeyboardAvoidingView,
+  ScrollView,
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -27,6 +28,7 @@ import {
 import {SignIn} from '../store/actions/auth_user';
 import FacebookBtn from '../components/FacebookBtn';
 import {Auth} from '../../Setup';
+import GoogleSignIn from '../components/GoogleSignIn';
 
 function Login({navigation}) {
   // const {
@@ -68,6 +70,9 @@ function Login({navigation}) {
 
 
   return (
+    <ScrollView>
+
+  
     <View style={styles.container}>
       <View style={{paddingBottom: '5%'}}>
         <Image style={styles.logo} source={require('../assets/images.jpeg')} />
@@ -143,7 +148,9 @@ function Login({navigation}) {
         </Text>
       </TouchableOpacity>
       <FacebookBtn />
+      <GoogleSignIn/>
     </View>
+    </ScrollView>
   );
 }
 const styles = StyleSheet.create({
